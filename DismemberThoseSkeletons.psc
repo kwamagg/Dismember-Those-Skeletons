@@ -96,8 +96,8 @@ Event OnWeaponHit(ObjectReference akTarget, Form akSource, Projectile akProjecti
 EndEvent
 
 State Busy
-	  Event OnWeaponHit(ObjectReference akTarget, Form akSource, Projectile akProjectile, Int aiHitFlagMask)
-	  EndEvent
+    Event OnWeaponHit(ObjectReference akTarget, Form akSource, Projectile akProjectile, Int aiHitFlagMask)
+    EndEvent
 
     Event OnMagicHit(ObjectReference akTarget, Form akSource, Projectile akProjectile)
     EndEvent
@@ -108,7 +108,7 @@ EndState
 
 Function DTS_Register()
     PO3_Events_Alias.RegisterForActorKilled(self)
-	  PO3_Events_Alias.RegisterForWeaponHit(self)
+    PO3_Events_Alias.RegisterForWeaponHit(self)
     PO3_Events_Alias.RegisterForMagicHit(self)
     PO3_Events_Alias.RegisterForProjectileHit(self)
 
@@ -191,13 +191,13 @@ Bool Function DTS_DetermineSkeleton(Actor akSkeleton)
 EndFunction
 
 Function DTS_SkeletonDropItems(Actor akSkeleton)
-	Int i = akSkeleton.GetNumItems()
-	While i > 0
-      i -= 1
-		  Form akObject = akSkeleton.GetNthForm(i)
-      Int akCount = akSkeleton.GetItemCount(akObject)
-      akSkeleton.DropObject(akObject, akCount)
-	EndWhile
+    Int i = akSkeleton.GetNumItems()
+    While i > 0
+        i -= 1
+        Form akObject = akSkeleton.GetNthForm(i)
+        Int akCount = akSkeleton.GetItemCount(akObject)
+        akSkeleton.DropObject(akObject, akCount)
+    EndWhile
 EndFunction
 
 Function DTS_DismemberSkeleton(Actor akSkeleton)
