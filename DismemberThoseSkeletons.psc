@@ -32,11 +32,11 @@ Bool OnActorKilledStarted = False
 Int akFormList = 100
 
 Event OnInit()
-	DTS_Register()
+    DTS_Register()
 EndEvent
 
 Event OnPlayerLoadGame()
-	DTS_Register()
+    DTS_Register()
 EndEvent
 
 Event OnActorKilled(Actor akSkeleton, Actor akKiller)
