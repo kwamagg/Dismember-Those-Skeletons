@@ -28,7 +28,6 @@ Keyword[] DTS_SkeletonVariantKeywords
 FormList Property DTS_SkeletonRemainsMasterlist Auto
 
 Actor killedSkeleton
-Bool OnActorKilledStarted = False
 Int akFormList = 100
 
 Event OnInit()
@@ -40,7 +39,6 @@ Event OnPlayerLoadGame()
 EndEvent
 
 Event OnActorKilled(Actor akSkeleton, Actor akKiller)
-    OnActorKilledStarted = True
     If !akSkeleton.IsDead() && (akSkeleton != killedSkeleton)
         If DTS_DetermineSkeleton(akSkeleton)
             DTS_SkeletonDropItems(akSkeleton)
@@ -52,9 +50,6 @@ EndEvent
 
 Event OnMagicHit(ObjectReference akTarget, Form akSource, Projectile akProjectile)
     Actor akSkeleton = akTarget as Actor
-    If akSkeleton == killedSkeleton
-        OnActorKilledStarted = False
-    EndIf
     If (akSkeleton != killedSkeleton) && akSkeleton.IsDead()
         If DTS_DetermineSkeleton(akSkeleton)
             GoToState("Busy")
@@ -67,9 +62,6 @@ EndEvent
 
 Event OnProjectileHit(ObjectReference akTarget, Form akSource, Projectile akProjectile)
     Actor akSkeleton = akTarget as Actor
-    If akSkeleton == killedSkeleton
-        OnActorKilledStarted = False
-    EndIf
     If (akSkeleton != killedSkeleton) && akSkeleton.IsDead()
         If DTS_DetermineSkeleton(akSkeleton)
             GoToState("Busy")
@@ -82,9 +74,6 @@ EndEvent
 
 Event OnWeaponHit(ObjectReference akTarget, Form akSource, Projectile akProjectile, Int aiHitFlagMask)
     Actor akSkeleton = akTarget as Actor
-    If akSkeleton == killedSkeleton
-        OnActorKilledStarted = False
-    EndIf
     If (akSkeleton != killedSkeleton) && akSkeleton.IsDead()
         If DTS_DetermineSkeleton(akSkeleton)
             GoToState("Busy")
